@@ -1,0 +1,19 @@
+<h1><%= @book.title %></h1>
+<h3>By <%= @book.author.full_name %></h3>
+<% if @book.cover.attached? %>
+    <%= cl_image_tag @book.cover.key, crop: :scale, width: 150, cloud_name: 'bbart121' %>
+<% end %>
+<h5>Genres: <%= @book.genres.map { |g| g.name }.join(", ") %></h5>
+<p>Publisher: <%= @book.publisher %></p>
+<p>Published: <%= @book.date_published %></p>
+<p>
+    <%= link_to "<<Back to Book List", books_path %>
+    <% if policy(@book).update? %>
+        |
+        <%= link_to "Edit", edit_book_path(@book) %>
+    <% end %>
+    <% if policy(@book).destroy? %>
+        |
+        <%= link_to "Delete", @book, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+</p>

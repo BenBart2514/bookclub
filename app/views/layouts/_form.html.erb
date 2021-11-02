@@ -1,0 +1,29 @@
+<%= form_with model: @book do |f| %>
+    <p>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :cover %>
+        <%= f.file_field :cover %>
+    </p>
+    <p>
+        <%= f.label :author_id %>
+        <%= f.collection_select :author_id, @authors, :id, :full_name %>
+    </p>
+    <p>
+        <%= f.label :publisher %>
+        <%= f.text_field :publisher %>
+    </p>
+    <p>
+        <%= f.label :date_published %>
+        <%= f.date_field :date_published %>
+    </p>
+    <p>
+        <%= f.label :genres %>
+        <%= f.collection_check_boxes :genre_ids, @genres, :id, :name %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
