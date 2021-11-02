@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   has_many :book_genres, dependent: :destroy
   has_many :genres, through: :book_genres
 
-  has_one_attached :cover, dependent: :purge
+  has_one_attached :cover, dependent: :purge_later
 
   validates :title, presence: { message: 'Please provide a title' }
   validates :date_published, presence: { message: 'Please set a publication date' }
